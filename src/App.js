@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import './App.css';
 import Axios from 'axios';
 import Coins from './Coins'
+import "./Coin.css"
 
 
 function App() {
@@ -39,6 +40,7 @@ const filteredCoins=coin.filter(coins=>
           className="coin-input" onChange={change}/>      
         </form>
       </div>
+        <div className='coin-blur'>
           {/* passing the data to the Coins.js component  */}
       {filteredCoins.map((coin)=>{
         return(
@@ -47,11 +49,13 @@ const filteredCoins=coin.filter(coins=>
           name ={coin.name}
           image={coin.image}
           symbol={coin.symbol}
-          volume={coin.market_cap}
+          volume={coin.total_volume}
           price={coin.current_price}
+          priceChange={coin.price_change_percentage_24h}
           />
         )
       })}
+      </div>
     </div>
   );
 }
